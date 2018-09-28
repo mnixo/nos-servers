@@ -2,9 +2,7 @@ import { LitElement, html } from '@polymer/lit-element';
 
 class NOSServersApp extends LitElement {
   static get properties() {
-    return {
-      
-    };
+    return {};
   }
 
   constructor() {
