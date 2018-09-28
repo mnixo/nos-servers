@@ -6,6 +6,7 @@
     "node_modules/@webcomponents/webcomponentsjs/bundles/*.js"
   ],
   "sources": [
+    "analytics.html",
     "service-worker.html",
     "service-worker.js"
   ],
