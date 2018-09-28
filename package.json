@@ -1,0 +1,21 @@
+{
+  "name": "nos-servers",
+  "version": "0.0.1",
+  "description": "Nuxeo Online Services servers dashboard.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnixo/nos-servers.git"
+  },
+  "author": "Miguel Nixo <mnixo@nuxeo.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/polymer-cli/bin/polymer.js serve"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.1.3",
+    "polymer-cli": "^1.8.0"
+  },
+  "dependencies": {
+    "@polymer/lit-element": "^0.6.1"
+  }
+}
