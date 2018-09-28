@@ -23,6 +23,8 @@
     "polymer-cli": "^1.8.0"
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.6.1"
+    "@polymer/app-layout": "^3.0.1",
+    "@polymer/lit-element": "^0.6.1",
+    "@polymer/paper-styles": "^3.0.1"
   }
 }
