@@ -1,12 +1,15 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import '@polymer/iron-autogrow-textarea/iron-autogrow-textarea';
 import '@polymer/paper-button/paper-button';
 import '@polymer/paper-dialog/paper-dialog';
+import { NOSBaseClass } from './nos-base-class';
 
-class NOSServersConfigDialog extends LitElement {
+class NOSServersConfigDialog extends NOSBaseClass {
   static get properties() {
     return {
-      isValid: { type: Boolean }
+      isValid: {
+        type: Boolean,
+      },
     };
   }
 
@@ -61,27 +64,24 @@ class NOSServersConfigDialog extends LitElement {
   }
 
   open(config) {
-    this.shadowRoot.getElementById('textArea').value = JSON.stringify(config, null, 2);
-    this.shadowRoot.getElementById('dialog').open();
+    this.getById('textArea').value = JSON.stringify(config, null, 2);
+    this.getById('dialog').open();
   }
 
   _onValueChanged() {
-    this.shadowRoot.getElementById('dialog').center();
+    this.getById('dialog').center();
     try {
-      JSON.parse(this.shadowRoot.getElementById('textArea').value);
+      JSON.parse(this.getById('textArea').value);
       this.isValid = true;
-    } catch(error) {
+    } catch (error) {
       this.isValid = false;
     }
   }
 
   _onSubmitConfig() {
-    this.dispatchEvent(new CustomEvent('config-submitted', {
-      detail: {
-        config: JSON.parse(this.shadowRoot.getElementById('textArea').value),
-      },
-    }));
+    this.fire('config-submitted', {
+      config: JSON.parse(this.getById('textArea').value),
+    });
   }
-
 }
 window.customElements.define('nos-servers-config-dialog', NOSServersConfigDialog);

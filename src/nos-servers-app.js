@@ -1,15 +1,18 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import '@polymer/app-layout/app-header/app-header';
 import '@polymer/app-layout/app-toolbar/app-toolbar';
 import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-styles/paper-styles';
+import { NOSBaseClass } from './nos-base-class';
 import './nos-servers-config-dialog';
 
-class NOSServersApp extends LitElement {
+class NOSServersApp extends NOSBaseClass {
   static get properties() {
     return {
-      _servers: { type: Array },
+      _servers: {
+        type: Array,
+      },
     };
   }
 
@@ -50,7 +53,7 @@ class NOSServersApp extends LitElement {
   }
 
   _openConfigDialog() {
-    this.shadowRoot.getElementById('configDialog').open(this._servers);
+    this.getById('configDialog').open(this._servers);
   }
 
   _onConfigSubmitted(e) {
@@ -63,6 +66,5 @@ class NOSServersApp extends LitElement {
       <div>${JSON.stringify(s)}</div>
     `);
   }
-
 }
 window.customElements.define('nos-servers-app', NOSServersApp);
