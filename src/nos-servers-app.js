@@ -7,6 +7,7 @@ import '@polymer/paper-styles/paper-styles';
 import { NOSBaseClass } from './nos-base-class';
 import './nos-server';
 import './nos-server-dialog';
+import './nos-server-studio-dialog';
 import './nos-servers-config-dialog';
 
 class NOSServersApp extends NOSBaseClass {
@@ -56,6 +57,7 @@ class NOSServersApp extends NOSBaseClass {
       <nos-servers-config-dialog id="configDialog" @config-submitted="${this._onConfigSubmitted.bind(this)}">
       </nos-servers-config-dialog>
       <nos-server-dialog id="serverDialog" @studio-tap="${this._onGoToStudioTap.bind(this)}"></nos-server-dialog>
+      <nos-server-studio-dialog id="studioDialog"></nos-server-studio-dialog>
       <div class="server-listing">
         ${this._renderServers(this._servers)}
       </div>
@@ -82,7 +84,7 @@ class NOSServersApp extends NOSBaseClass {
   }
 
   _onGoToStudioTap(e) {
-    // console.log(e.detail.server);
+    this.getById('studioDialog').open(e.detail.server);
   }
 }
 window.customElements.define('nos-servers-app', NOSServersApp);

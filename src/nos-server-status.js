@@ -58,7 +58,9 @@ class NOSServerStatus extends NOSBaseClass {
     this._status = '?';
     this._message = 'Waiting...';
     const timeBefore = new Date();
-    fetch(this.url).then(() => {
+    fetch(new Request(this.url, {
+      mode: 'no-cors',
+    })).then(() => {
       this._status = 'ok';
       this._message = `Online (${(new Date()) - timeBefore}ms)`;
     }).catch(() => {

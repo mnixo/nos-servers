@@ -37,8 +37,17 @@ class NOSServerDialog extends NOSBaseClass {
         <p class="label">${this.server.label}</p>
         <paper-button raised dialog-dismiss @tap="${this._onConnectDashboardTap.bind(this)}">connect dashboard</paper-button>
         <paper-button raised dialog-dismiss @tap="${this._onNuxeoBackendTap.bind(this)}">nuxeo backend</paper-button>
-        <paper-button raised dialog-dismiss @tap="${this._onStudioTap.bind(this)}">studio</paper-button>
+        ${this._renderStudioButton(this.server)}
       </paper-dialog>
+    `;
+  }
+
+  _renderStudioButton(server) {
+    const hasProjects = server && server.studioProjects && server.studioProjects.length > 0;
+    return html`
+      <paper-button raised dialog-dismiss @tap="${this._onStudioTap.bind(this)}" .disabled="${!hasProjects}">
+        studio
+      </paper-button>
     `;
   }
 
