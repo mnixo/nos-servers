@@ -29,14 +29,17 @@ class NOSServer extends NOSBaseClass {
         p {
           margin: 0;
         }
-        .title {
+        .label {
           font-weight: bold;
           font-size: larger;
-        } 
+        }
+        .url {
+          font-size: small;
+        }
       </style>
       <paper-card @tap="${this._onTap.bind(this)}">
-        <p class="title">${this.server.label}</p>
-        <p>${this.server.url}</p>
+        <p class="label">${this.server.label}</p>
+        <p class="url">${this.server.url}</p>
         <nos-server-status url="${this.server.url}"></nos-server-status>
       </paper-card>
     `;

@@ -28,10 +28,10 @@ class NOSServersApp extends NOSBaseClass {
 
   render() {
     return html`
-      <style>
+      <style> 
         app-header {
           font-family: var(--paper-font-common-base_-_font-family);
-          background-color: #0066ff;
+          background-color: #1f28bf;
           color: #fff;
         }
         app-drawer {
