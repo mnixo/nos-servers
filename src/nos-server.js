@@ -23,11 +23,15 @@ class NOSServer extends NOSBaseClass {
         paper-card {
           width: 100%;
           margin-bottom: 0.5em;
-          padding: 0 1em;
+          padding: 1em;
           cursor: pointer;
+        }
+        p {
+          margin: 0;
         }
         .title {
           font-weight: bold;
+          font-size: larger;
         } 
       </style>
       <paper-card @tap="${this._onTap.bind(this)}">
