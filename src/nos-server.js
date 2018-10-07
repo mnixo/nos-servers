@@ -46,7 +46,7 @@ class NOSServer extends NOSBaseClass {
   }
 
   _onTap() {
-    window.open(this.server.url, '_blank').focus();
+    this.fire('tap');
   }
 }
 window.customElements.define('nos-server', NOSServer);

@@ -68,20 +68,16 @@ class NOSServerStatus extends NOSBaseClass {
   }
 
   _renderIcon() {
-    switch (this._status) {
-      case '?':
-        return html`
-          <paper-spinner active></paper-spinner>
-        `;
-      case 'ok':
-        return html`
-          <iron-icon class="ok" icon="check"></iron-icon>
-        `;
-      case 'ko':
-        return html`
-          <iron-icon class="ko" icon="close"></iron-icon>
-        `;
+    if (this._status === '?') {
+      return html`
+        <paper-spinner active></paper-spinner>
+      `;
     }
+    const style = this._status === 'ok' ? 'ok' : 'ko';
+    const icon = this._status === 'ok' ? 'check' : 'close';
+    return html`
+      <iron-icon class="${style}" icon="${icon}"></iron-icon>
+    `;
   }
 }
 window.customElements.define('nos-server-status', NOSServerStatus);

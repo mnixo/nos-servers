@@ -6,6 +6,7 @@ import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-styles/paper-styles';
 import { NOSBaseClass } from './nos-base-class';
 import './nos-server';
+import './nos-server-dialog';
 import './nos-servers-config-dialog';
 
 class NOSServersApp extends NOSBaseClass {
@@ -54,10 +55,17 @@ class NOSServersApp extends NOSBaseClass {
       </app-header>
       <nos-servers-config-dialog id="configDialog" @config-submitted="${this._onConfigSubmitted.bind(this)}">
       </nos-servers-config-dialog>
+      <nos-server-dialog id="serverDialog" @studio-tap="${this._onGoToStudioTap.bind(this)}"></nos-server-dialog>
       <div class="server-listing">
         ${this._renderServers(this._servers)}
       </div>
     `;
+  }
+
+  _renderServers(servers) {
+    return servers.map(server => html`
+      <nos-server .server="${server}" @tap="${() => this._onServerTap(server)}"></nos-server>
+    `);
   }
 
   _openConfigDialog() {
@@ -69,10 +77,12 @@ class NOSServersApp extends NOSBaseClass {
     localStorage.setItem('servers', JSON.stringify(this._servers));
   }
 
-  _renderServers(servers) {
-    return servers.map(s => html`
-      <nos-server .server="${s}"></nos-server>
-    `);
+  _onServerTap(server) {
+    this.getById('serverDialog').open(server);
+  }
+
+  _onGoToStudioTap(e) {
+    // console.log(e.detail.server);
   }
 }
 window.customElements.define('nos-servers-app', NOSServersApp);
