@@ -48,7 +48,7 @@ class NOSServersConfigDialog extends NOSBaseClass {
       <paper-dialog id="dialog" with-backdrop>
         <h3>Edit Configuration</h3>
         <div class="text-area-container">
-          <iron-autogrow-textarea maxlength="999" id="textArea" @value-changed="${this._onValueChanged.bind(this)}">
+          <iron-autogrow-textarea id="textArea" @value-changed="${this._onValueChanged.bind(this)}">
           </iron-autogrow-textarea>
         </div>
         <div class="buttons">

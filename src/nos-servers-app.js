@@ -5,6 +5,7 @@ import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-styles/paper-styles';
 import { NOSBaseClass } from './nos-base-class';
+import './nos-server';
 import './nos-servers-config-dialog';
 
 class NOSServersApp extends NOSBaseClass {
@@ -39,6 +40,11 @@ class NOSServersApp extends NOSBaseClass {
         app-toolbar {
           justify-content: space-between;
         }
+        .server-listing {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em;
+        }
       </style>
       <app-header reveals>
         <app-toolbar>
@@ -48,7 +54,9 @@ class NOSServersApp extends NOSBaseClass {
       </app-header>
       <nos-servers-config-dialog id="configDialog" @config-submitted="${this._onConfigSubmitted.bind(this)}">
       </nos-servers-config-dialog>
-      ${this._renderServers(this._servers)}
+      <div class="server-listing">
+        ${this._renderServers(this._servers)}
+      </div>
     `;
   }
 
@@ -63,7 +71,7 @@ class NOSServersApp extends NOSBaseClass {
 
   _renderServers(servers) {
     return servers.map(s => html`
-      <div>${JSON.stringify(s)}</div>
+      <nos-server .server="${s}"></nos-server>
     `);
   }
 }
