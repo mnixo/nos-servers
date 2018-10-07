@@ -1,6 +1,7 @@
 import { html } from '@polymer/lit-element';
 import '@polymer/paper-card/paper-card';
 import { NOSBaseClass } from './nos-base-class';
+import './nos-server-status';
 
 class NOSServer extends NOSBaseClass {
   static get properties() {
@@ -32,6 +33,7 @@ class NOSServer extends NOSBaseClass {
       <paper-card @tap="${this._onTap.bind(this)}">
         <p class="title">${this.server.label}</p>
         <p>${this.server.url}</p>
+        <nos-server-status url="${this.server.url}"></nos-server-status>
       </paper-card>
     `;
   }
