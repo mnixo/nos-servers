@@ -4,6 +4,7 @@ import '@polymer/app-layout/app-toolbar/app-toolbar';
 import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-styles/paper-styles';
+import { defaultConfig } from './default-config';
 import { NOSBaseClass } from './nos-base-class';
 import './nos-server';
 import './nos-server-dialog';
@@ -23,7 +24,7 @@ class NOSServersApp extends NOSBaseClass {
     super();
     this._servers = JSON.parse(localStorage.getItem('servers'));
     if (!this._servers) {
-      this._servers = [];
+      this._servers = defaultConfig;
       localStorage.setItem('servers', JSON.stringify(this._servers));
     }
   }

@@ -2,6 +2,7 @@ import { html } from '@polymer/lit-element';
 import '@polymer/iron-autogrow-textarea/iron-autogrow-textarea';
 import '@polymer/paper-button/paper-button';
 import '@polymer/paper-dialog/paper-dialog';
+import { defaultConfig } from './default-config';
 import { NOSBaseClass } from './nos-base-class';
 
 class NOSServersConfigDialog extends NOSBaseClass {
@@ -39,10 +40,18 @@ class NOSServersConfigDialog extends NOSBaseClass {
           font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
           border: none;         
         }
-        div.buttons {
-          min-height: 40px;
+        .container-buttons {
+          display: flex;
+          justify-content: space-between;
           padding: 0;
           margin: 20px;
+          min-height: 40px;
+        }
+        .container-buttons > paper-button {
+          margin: 0;
+        }
+        .container-buttons > div > paper-button {
+          margin: 0 0 0 8px;
         }
       </style>
       <paper-dialog id="dialog" with-backdrop>
@@ -51,13 +60,16 @@ class NOSServersConfigDialog extends NOSBaseClass {
           <iron-autogrow-textarea id="textArea" @value-changed="${this._onValueChanged.bind(this)}">
           </iron-autogrow-textarea>
         </div>
-        <div class="buttons">
-          <paper-button dialog-confirm raised @tap="${this._onSubmitConfig.bind(this)}" .disabled="${!this.isValid}">
-            ok
-          </paper-button>
-          <paper-button dialog-dismiss raised>
-            cancel
-          </paper-button>
+        <div class="container-buttons">
+          <paper-button raised @tap="${this._onReset.bind(this)}">reset</paper-button>
+          <div>
+            <paper-button dialog-confirm raised @tap="${this._onSubmitConfig.bind(this)}" .disabled="${!this.isValid}">
+              confirm
+            </paper-button>
+            <paper-button dialog-dismiss raised>
+              cancel
+            </paper-button>
+          </div>
         </div>
       </paper-dialog>
     `;
@@ -76,6 +88,10 @@ class NOSServersConfigDialog extends NOSBaseClass {
     } catch (error) {
       this.isValid = false;
     }
+  }
+
+  _onReset() {
+    this.getById('textArea').value = JSON.stringify(defaultConfig, null, 2);
   }
 
   _onSubmitConfig() {
