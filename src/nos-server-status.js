@@ -58,7 +58,7 @@ class NOSServerStatus extends NOSBaseClass {
     this._status = '?';
     this._message = 'Waiting...';
     const timeBefore = new Date();
-    fetch(new Request(this.url, {
+    fetch(new Request(`${this.url}/nuxeo/site/connect/dashboard`, {
       mode: 'no-cors',
     })).then(() => {
       this._status = 'ok';
