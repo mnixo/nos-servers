@@ -50,8 +50,10 @@ class NOSServerStatus extends NOSBaseClass {
     `;
   }
 
-  firstUpdated(changedProperties) {
-    this._pingServer();
+  updated(changedProperties) {
+    if (changedProperties.has('url')) {
+      this._pingServer();
+    }
   }
 
   _pingServer() {
