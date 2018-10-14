@@ -1,0 +1,21 @@
+{
+  "short_name": "NOS Servers",
+  "name": "Nuxeo Online Services Servers",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/nos-servers/",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "scope": "/nos-servers/",
+  "theme_color": "#1F28BF"
+}

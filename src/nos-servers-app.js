@@ -51,7 +51,7 @@ class NOSServersApp extends NOSBaseClass {
       </style>
       <app-header reveals>
         <app-toolbar>
-          <paper-icon-button src="img/logo-32.png"></paper-icon-button>
+          <paper-icon-button src="img/icon-32.png"></paper-icon-button>
           <div main-title>NOS Servers</div>
           <paper-icon-button icon="settings" @tap="${this._openConfigDialog.bind(this)}"></paper-icon-button>
         </app-toolbar>
