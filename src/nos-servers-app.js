@@ -43,10 +43,14 @@ class NOSServersApp extends NOSBaseClass {
         app-toolbar {
           justify-content: space-between;
         }
-        .server-listing {
+        .server-listing-container {
           display: flex;
           flex-direction: column;
+          align-items: center;
           padding: 0.5em;
+        }
+        .server-listing {
+          max-width: 800px;
         }
       </style>
       <app-header reveals>
@@ -60,8 +64,10 @@ class NOSServersApp extends NOSBaseClass {
       </nos-servers-config-dialog>
       <nos-server-dialog id="serverDialog" @studio-tap="${this._onGoToStudioTap.bind(this)}"></nos-server-dialog>
       <nos-server-studio-dialog id="studioDialog"></nos-server-studio-dialog>
-      <div class="server-listing">
-        ${this._renderServers(this._servers)}
+      <div class="server-listing-container">
+        <div class="server-listing">
+          ${this._renderServers(this._servers)}
+        </div>
       </div>
     `;
   }
