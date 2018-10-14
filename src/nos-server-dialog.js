@@ -1,6 +1,7 @@
 import { html } from '@polymer/lit-element';
 import '@polymer/paper-button/paper-button';
 import '@polymer/paper-dialog/paper-dialog';
+import { sendEvent } from './analytics';
 import { NOSBaseClass } from './nos-base-class';
 
 class NOSServerDialog extends NOSBaseClass {
@@ -61,10 +62,12 @@ class NOSServerDialog extends NOSBaseClass {
   }
 
   _onConnectDashboardTap() {
+    sendEvent('connect');
     this._openNewTab(this.server.url);
   }
 
   _onNuxeoBackendTap() {
+    sendEvent('backend');
     this._openNewTab(`${this.server.url}/nuxeo`);
   }
 

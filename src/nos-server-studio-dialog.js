@@ -4,6 +4,7 @@ import '@polymer/paper-dialog/paper-dialog';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu';
 import '@polymer/paper-listbox/paper-listbox';
 import '@polymer/paper-item/paper-item';
+import { sendEvent } from './analytics';
 import { NOSBaseClass } from './nos-base-class';
 
 class NOSServerStudioDialog extends NOSBaseClass {
@@ -73,10 +74,12 @@ class NOSServerStudioDialog extends NOSBaseClass {
   }
 
   _onModelerTap() {
+    sendEvent('studio-modeler');
     this._openNewTab(`${this.server.url}/nuxeo/site/studio/ide?project=${this.getById('listbox').selectedItem.value}`);
   }
 
   _onDesignerTap() {
+    sendEvent('studio-designer');
     this._openNewTab(`${this.server.url}/nuxeo/designer/#/${this.getById('listbox').selectedItem.value}`);
   }
 }
