@@ -62,12 +62,12 @@ class NOSServerDialog extends NOSBaseClass {
   }
 
   _onConnectDashboardTap() {
-    sendEvent('connect');
+    sendEvent('connect', {});
     this._openNewTab(this.server.url);
   }
 
   _onNuxeoBackendTap() {
-    sendEvent('backend');
+    sendEvent('backend', {});
     this._openNewTab(`${this.server.url}/nuxeo`);
   }
 

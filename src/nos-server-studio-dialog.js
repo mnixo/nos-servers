@@ -74,12 +74,12 @@ class NOSServerStudioDialog extends NOSBaseClass {
   }
 
   _onModelerTap() {
-    sendEvent('studio-modeler');
+    sendEvent('studio-modeler', {});
     this._openNewTab(`${this.server.url}/nuxeo/site/studio/ide?project=${this.getById('listbox').selectedItem.value}`);
   }
 
   _onDesignerTap() {
-    sendEvent('studio-designer');
+    sendEvent('studio-designer', {});
     this._openNewTab(`${this.server.url}/nuxeo/designer/#/${this.getById('listbox').selectedItem.value}`);
   }
 }
